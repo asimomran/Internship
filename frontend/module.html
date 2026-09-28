@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Module Player - LearnFlow</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/style.css">
+  </head>
+  <body class="font-sans antialiased text-slate-300 bg-slate-950 flex flex-col h-screen overflow-hidden selection:bg-indigo-500/30">
+    
+    <!-- Navbar -->
+    <nav class="flex-shrink-0 z-50 w-full bg-slate-950 border-b border-white/5 h-16 flex items-center px-4 sm:px-6">
+      <a id="back-link" href="/dashboard.html" class="flex items-center gap-2 text-slate-400 hover:text-white transition-colors mr-6 border-r border-slate-800 pr-6">
+        <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+        <span class="font-medium hidden sm:block">Back to Course</span>
+      </a>
+      
+      <div class="flex-1 truncate">
+        <h1 id="module-title" class="text-white font-semibold truncate leading-tight">Loading Module...</h1>
+        <p id="course-name" class="text-xs text-slate-500 truncate">Course Name</p>
+      </div>
+
+      <div class="flex items-center gap-4 ml-6">
+        <div id="course-progress-container" class="hidden sm:flex flex-col items-end gap-1 min-w-[120px]">
+          <div class="flex justify-between w-full text-[10px] font-bold uppercase tracking-wider text-slate-500">
+            <span>Progress</span>
+            <span id="course-progress-percent">0%</span>
+          </div>
+          <div class="w-full bg-slate-800 rounded-full h-1.5 overflow-hidden border border-white/5">
+            <div id="course-progress-fill" class="bg-gradient-to-r from-indigo-500 to-cyan-400 h-full transition-all duration-500" style="width: 0%"></div>
+          </div>
+
+        <div class="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-lg bg-indigo-500/10 border border-indigo-500/20 text-indigo-400">
+          <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+          <span id="time-tracker" class="font-mono text-sm font-medium">00:00</span>
+        </div>
+        </div>
+
+        <!-- Progress Timer Tracker -->
+
+        
+        <button id="complete-btn" class="px-4 py-2 bg-gradient-to-r from-indigo-500 to-cyan-500 hover:from-indigo-400 hover:to-cyan-400 text-white text-sm font-medium rounded-lg shadow-lg shadow-indigo-500/30 hover:shadow-indigo-500/50 transition-all flex items-center gap-2">
+          <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+          Mark Complete
+        </button>
+      </div>
+    </nav>
+
+    <!-- Main Content Area -->
+    <div class="flex-1 flex overflow-hidden">
+      <!-- Player/Content Area -->
+      <main class="flex-1 relative bg-black flex flex-col items-center justify-start overflow-y-auto">
+        <!-- Actual Video Player -->
+        <div class="w-full max-w-5xl aspect-video bg-slate-900 rounded-xl overflow-hidden border border-slate-800 shadow-2xl relative m-4">
+          <iframe id="video-player" class="w-full h-full" src="" title="Video Player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+
+        <!-- Text Content Area Below Video -->
+        <div id="module-content" class="w-full max-w-5xl mx-auto px-6 py-8 text-slate-300">
+          <h2 class="text-2xl font-bold text-white mb-4">Module Summary</h2>
+          <div id="module-description-text">
+            Loading module details...
+          </div>
+        </div>
+      </main>
+
+      <!-- Sidebar Content (Videos in Module) -->
+      <aside class="w-80 bg-slate-900 border-l border-white/5 flex flex-col hidden lg:flex">
+        <div class="p-4 border-b border-white/5">
+          <h3 class="font-semibold text-white">Videos in this Module</h3>
+        </div>
+        <div id="video-list" class="flex-1 overflow-y-auto p-4 space-y-3">
+          <!-- Videos will be injected here -->
+        </div>
+      </aside>
+    </div>
+
+    <script type="module" src="/src/module.js"></script>
+  </body>
+</html>

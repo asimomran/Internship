@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin - LearnFlow</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/style.css">
+  </head>
+  <body class="font-sans antialiased text-slate-300 bg-slate-950 flex h-screen overflow-hidden selection:bg-purple-500/30">
+    
+    <!-- Sidebar -->
+    <aside class="w-64 bg-slate-900/80 backdrop-blur-xl border-r border-slate-800 flex flex-col transition-all duration-300 hidden md:flex">
+      <div class="h-16 flex items-center px-6 border-b border-slate-800">
+        <div class="flex items-center gap-2">
+            <svg class="h-6 w-6 text-purple-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+            </svg>
+            <span class="text-lg font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-400">LearnFlow Admin</span>
+        </div>
+      </div>
+      
+      <nav class="flex-1 overflow-y-auto py-4 px-3 space-y-1">
+        <a href="/admin.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-purple-500/10 text-purple-400 font-medium border border-purple-500/20">
+          <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" /></svg>
+          Overview
+        </a>
+        <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800/50 transition-colors">
+          <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
+          Users
+        </a>
+        <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800/50 transition-colors">
+          <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" /></svg>
+          Courses
+        </a>
+      </nav>
+
+      <div class="p-4 border-t border-slate-800">
+        <a href="/index.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-400 hover:text-red-400 hover:bg-red-400/10 transition-colors">
+          <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" /></svg>
+          Logout
+        </a>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 flex flex-col h-screen overflow-hidden relative">
+      <!-- Glow Elements -->
+      <div class="absolute top-[-20%] right-[-10%] w-[50%] h-[50%] rounded-full bg-pink-600/10 blur-[130px] pointer-events-none"></div>
+
+      <!-- Topbar -->
+      <header class="h-16 flex items-center justify-between px-6 border-b border-white/5 bg-slate-900/50 backdrop-blur-md z-10">
+        <!-- Mobile Menu Button -->
+        <button class="md:hidden text-slate-400 hover:text-white">
+          <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+        </button>
+
+        <h1 class="text-xl font-semibold text-white">Administrator Panel</h1>
+
+        <div class="flex items-center gap-4">
+          <div class="h-8 w-8 rounded-full bg-gradient-to-tr from-purple-500 to-pink-500 p-[2px]">
+            <img class="h-full w-full rounded-full border border-slate-900 object-cover" src="https://i.pravatar.cc/150?img=68" alt="Admin Avatar">
+          </div>
+        </div>
+      </header>
+
+      <!-- Scrollable Content Area -->
+      <div class="flex-1 overflow-y-auto p-6 z-10">
+        <div class="max-w-6xl mx-auto space-y-8">
+
+          <!-- Header & Actions -->
+          <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+            <div>
+              <h2 class="text-2xl font-bold text-white mb-1">Course Management</h2>
+              <p class="text-slate-400">Create, edit, and organize platform content.</p>
+            </div>
+            <button class="flex items-center gap-2 px-4 py-2.5 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-400 hover:to-pink-400 text-white font-medium rounded-lg shadow-lg shadow-purple-500/30 hover:shadow-purple-500/50 transition-all transform hover:-translate-y-0.5">
+              <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+              Create Course
+            </button>
+          </div>
+
+          <!-- Stats -->
+          <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+            <div class="bg-slate-900/60 border border-slate-800 rounded-2xl p-5 shadow-lg backdrop-blur-md">
+              <div class="text-slate-400 text-sm mb-1">Total Users</div>
+              <div class="text-2xl font-bold text-white">1,248</div>
+            </div>
+            <div class="bg-slate-900/60 border border-slate-800 rounded-2xl p-5 shadow-lg backdrop-blur-md">
+              <div class="text-slate-400 text-sm mb-1">Total Courses</div>
+              <div class="text-2xl font-bold text-white">24</div>
+            </div>
+            <div class="bg-slate-900/60 border border-slate-800 rounded-2xl p-5 shadow-lg backdrop-blur-md">
+              <div class="text-slate-400 text-sm mb-1">Total Modules</div>
+              <div class="text-2xl font-bold text-white">142</div>
+            </div>
+            <div class="bg-slate-900/60 border border-slate-800 rounded-2xl p-5 shadow-lg backdrop-blur-md">
+              <div class="text-slate-400 text-sm mb-1">Active Enrollments</div>
+              <div class="text-2xl font-bold text-white">8,930</div>
+            </div>
+          </div>
+
+          <!-- Charts Section -->
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <div class="bg-slate-900/60 border border-slate-800 rounded-2xl p-6 shadow-lg backdrop-blur-md">
+              <h3 class="text-lg font-semibold text-white mb-6">Course Engagement</h3>
+              <div class="h-64 relative">
+                <canvas id="adminPerformanceChart"></canvas>
+              </div>
+            </div>
+            
+            <div class="bg-slate-900/60 border border-slate-800 rounded-2xl p-6 shadow-lg backdrop-blur-md">
+              <h3 class="text-lg font-semibold text-white mb-6">Category Popularity</h3>
+              <div class="h-64 relative">
+                <canvas id="adminCategoryChart"></canvas>
+              </div>
+            </div>
+          </div>
+
+          <!-- Courses Table -->
+          <div class="bg-slate-900/60 border border-slate-800 rounded-2xl shadow-lg backdrop-blur-md overflow-hidden">
+            <div class="p-6 border-b border-white/5 flex justify-between items-center">
+              <h3 class="text-lg font-semibold text-white">Recent Courses</h3>
+              <div class="relative">
+                <svg class="h-5 w-5 text-slate-500 absolute left-3 top-1/2 -translate-y-1/2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                <input type="text" placeholder="Search courses..." class="pl-10 pr-4 py-2 bg-slate-800 border border-slate-700 rounded-lg text-sm text-white placeholder-slate-500 focus:outline-none focus:border-purple-500 w-64 transition-colors">
+              </div>
+            </div>
+            <div class="overflow-x-auto">
+              <table class="w-full text-left text-sm whitespace-nowrap">
+                <thead class="bg-slate-800/50 text-slate-400 border-b border-slate-700">
+                  <tr>
+                    <th class="px-6 py-4 font-medium">Course Title</th>
+                    <th class="px-6 py-4 font-medium">Category</th>
+                    <th class="px-6 py-4 font-medium">Modules</th>
+                    <th class="px-6 py-4 font-medium">Status</th>
+                    <th class="px-6 py-4 font-medium text-right">Actions</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-800/50 text-slate-300">
+                  <tr class="hover:bg-slate-800/30 transition-colors">
+                    <td class="px-6 py-4 font-medium text-white flex items-center gap-3">
+                      <div class="h-8 w-8 rounded bg-gradient-to-br from-indigo-500 to-cyan-500 flex items-center justify-center text-xs font-bold text-white shadow-sm">JS</div>
+                      Modern JavaScript
+                    </td>
+                    <td class="px-6 py-4">Programming</td>
+                    <td class="px-6 py-4">12</td>
+                    <td class="px-6 py-4"><span class="px-2.5 py-1 text-xs font-medium bg-emerald-500/10 text-emerald-400 rounded-full border border-emerald-500/20">Published</span></td>
+                    <td class="px-6 py-4 text-right">
+                      <button class="text-slate-400 hover:text-purple-400 transition-colors mr-3">Edit</button>
+                      <button class="text-slate-400 hover:text-red-400 transition-colors">Delete</button>
+                    </td>
+                  </tr>
+                  <tr class="hover:bg-slate-800/30 transition-colors">
+                    <td class="px-6 py-4 font-medium text-white flex items-center gap-3">
+                      <div class="h-8 w-8 rounded bg-gradient-to-br from-green-500 to-emerald-500 flex items-center justify-center text-xs font-bold text-white shadow-sm">SP</div>
+                      Spring Boot Mastery
+                    </td>
+                    <td class="px-6 py-4">Backend</td>
+                    <td class="px-6 py-4">24</td>
+                    <td class="px-6 py-4"><span class="px-2.5 py-1 text-xs font-medium bg-emerald-500/10 text-emerald-400 rounded-full border border-emerald-500/20">Published</span></td>
+                    <td class="px-6 py-4 text-right">
+                      <button class="text-slate-400 hover:text-purple-400 transition-colors mr-3">Edit</button>
+                      <button class="text-slate-400 hover:text-red-400 transition-colors">Delete</button>
+                    </td>
+                  </tr>
+                  <tr class="hover:bg-slate-800/30 transition-colors">
+                    <td class="px-6 py-4 font-medium text-white flex items-center gap-3">
+                      <div class="h-8 w-8 rounded bg-gradient-to-br from-orange-500 to-amber-500 flex items-center justify-center text-xs font-bold text-white shadow-sm">UI</div>
+                      Advanced UI Design
+                    </td>
+                    <td class="px-6 py-4">Design</td>
+                    <td class="px-6 py-4">8</td>
+                    <td class="px-6 py-4"><span class="px-2.5 py-1 text-xs font-medium bg-amber-500/10 text-amber-400 rounded-full border border-amber-500/20">Draft</span></td>
+                    <td class="px-6 py-4 text-right">
+                      <button class="text-slate-400 hover:text-purple-400 transition-colors mr-3">Edit</button>
+                      <button class="text-slate-400 hover:text-red-400 transition-colors">Delete</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </main>
+
+    <!-- Create Course Modal -->
+    <div id="create-course-modal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-[100] flex items-center justify-center p-4 hidden">
+        <div class="bg-slate-900 border border-slate-800 rounded-3xl w-full max-w-2xl max-h-[90vh] overflow-y-auto p-8 shadow-2xl relative">
+            <button id="close-modal" class="absolute top-6 right-6 text-slate-500 hover:text-white transition-colors">
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+            
+            <h2 class="text-3xl font-bold text-white mb-2">Create New Course</h2>
+            <p class="text-slate-400 mb-8">Fill in the details to publish a new course module.</p>
+            
+            <form id="create-course-form" class="space-y-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-sm font-medium text-slate-400 mb-2">Course Title</label>
+                        <input type="text" id="course-title-input" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-purple-500 transition-colors" placeholder="e.g. Master React" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-slate-400 mb-2">Category</label>
+                        <select id="course-category-input" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-purple-500 transition-colors">
+                            <option value="Programming">Programming</option>
+                            <option value="Design">Design</option>
+                            <option value="Business">Business</option>
+                            <option value="Marketing">Marketing</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div>
+                    <label class="block text-sm font-medium text-slate-400 mb-2">Description</label>
+                    <textarea id="course-description-input" rows="4" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-purple-500 transition-colors" placeholder="What will students learn?" required></textarea>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-sm font-medium text-slate-400 mb-2">Instructor Name</label>
+                        <input type="text" id="course-instructor-input" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-purple-500 transition-colors" placeholder="e.g. Jane Doe" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-slate-400 mb-2">Hero Color Accent</label>
+                        <input type="text" id="course-accent-input" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-purple-500 transition-colors" placeholder="e.g. indigo-500" value="indigo-500">
+                    </div>
+                </div>
+
+                <div class="space-y-4">
+                    <h3 class="text-lg font-semibold text-white">First Module (Initial Content)</h3>
+                    <div class="p-5 bg-slate-800/50 rounded-2xl border border-slate-700/50 space-y-4">
+                        <input type="text" id="module-title-input" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-2 text-white focus:outline-none focus:border-purple-500 transition-colors" placeholder="Module Title" required>
+                        <textarea id="module-summary-input" rows="2" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-2 text-white focus:outline-none focus:border-purple-500 transition-colors" placeholder="Brief Summary" required></textarea>
+                        <textarea id="module-content-input" rows="3" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-2 text-white focus:outline-none focus:border-purple-500 transition-colors" placeholder="Main Content Text" required></textarea>
+                    </div>
+                </div>
+
+                <button type="submit" class="w-full py-4 bg-gradient-to-r from-purple-500 to-pink-500 text-white font-bold rounded-xl shadow-lg shadow-purple-500/20 hover:shadow-purple-500/40 transition-all active:scale-[0.98]">
+                    Publish Course
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script type="module" src="/src/admin.js"></script>
+  </body>
+</html>
